@@ -1,0 +1,51 @@
+on:
+  push:
+    paths-ignore:
+      - "patch/patchlist/patch3.txt"
+    branches:
+      - main
+  pull_request:
+    paths-ignore:
+      - "patch/patchlist/patch3.txt"
+    branches:
+      - main
+
+concurrency:
+  group: patch-deployment
+  cancel-in-progress: false
+
+name: Push iRO Wiki Patches
+jobs:
+  patch-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.ACTIONS_PAT }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Get changed files
+      id: changed_files
+      run: |
+        git diff --name-status ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
+
+    - name: Run Patch3 Update Script
+      run: python scripts/update_patch3.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
+
+    - name: Push files into FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.ftp_server }}
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
+        local-dir: ./patch/
+        server-dir: ./wikipatch/
