@@ -109,5 +109,6 @@
 1107 monsters_qol.rgz
 //1108 questinfo.rgz
 //1109 iteminfo.rgz
-1110 iteminfo.rgz
+//1110 iteminfo.rgz
 1111 questinfo.rgz
+1112 iteminfo.rgz
