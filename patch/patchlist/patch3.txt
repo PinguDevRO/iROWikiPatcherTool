@@ -83,7 +83,7 @@
 //1082 live_client.gpf
 //1083 iteminfo.rgz
 1084 bundle_all_edits.gpf
-1085 patch_some_edits.gpf
+//1085 patch_some_edits.gpf
 //1086 live_client.gpf
 //1087 iteminfo.rgz
 //1088 iteminfo.rgz
@@ -112,3 +112,4 @@
 //1110 iteminfo.rgz
 1111 questinfo.rgz
 1112 iteminfo.rgz
+1113 patch_some_edits.gpf
