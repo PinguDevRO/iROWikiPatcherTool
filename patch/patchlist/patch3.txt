@@ -113,4 +113,6 @@
 1111 questinfo.rgz
 //1112 iteminfo.rgz
 1113 patch_some_edits.gpf
-1114 iteminfo.rgz
+//1114 iteminfo.rgz
+1115 mvp_card_sprites.gpf
+1116 iteminfo.rgz
