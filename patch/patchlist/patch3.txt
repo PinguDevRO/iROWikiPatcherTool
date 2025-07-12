@@ -120,3 +120,4 @@
 1118 iteminfo.rgz
 1119 questinfo.rgz
 1120 patch_some_edits.gpf
+1121 stateicon.gpf
